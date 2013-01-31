@@ -6,4 +6,7 @@
     <string name="menu_search">Search</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <string name="search_label">QuickSearchBoxSample</string>
+    <string name="search_hint">キーワード</string>
+    <string name="settings_description">検索サンプル</string>
 </resources>

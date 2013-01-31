@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SearchRecentSuggestions;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,6 +36,15 @@ public class QuickSearchBoxSample extends Activity {
 	private void doSearchWithIntent(final Intent queryIntent){
 		//検索文字列は SearchManager.Queryというキーに入っている
 		final String queryString = queryIntent.getStringExtra(SearchManager.QUERY);
+		
+		//SearchRecentSuggestionsインスタンス生成
+		SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this, 
+				"com.android.quicksearchboxsample.suggetions.authority",
+				SearchProvider.DATABASE_MODE_QUERIES);
+		
+		//検索文字列を次の候補として保存する
+		suggestions.saveRecentQuery(queryString, null);
+		
 		doSearchWithQuery(queryString);
 	}
 	
